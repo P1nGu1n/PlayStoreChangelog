@@ -18,8 +18,11 @@
  */
 package com.p1ngu1n.playstorechangelog;
 
+import android.os.Bundle;
+
 import de.robv.android.xposed.IXposedHookLoadPackage;
 import de.robv.android.xposed.XC_MethodHook;
+import de.robv.android.xposed.XC_MethodReplacement;
 import de.robv.android.xposed.XposedHelpers;
 import de.robv.android.xposed.callbacks.XC_LoadPackage;
 
@@ -29,7 +32,7 @@ import de.robv.android.xposed.callbacks.XC_LoadPackage;
 public class PlayStoreChangelog implements IXposedHookLoadPackage {
 
     @Override
-    public void handleLoadPackage(XC_LoadPackage.LoadPackageParam loadPackageParam) throws Throwable {
+    public void handleLoadPackage(final XC_LoadPackage.LoadPackageParam loadPackageParam) throws Throwable {
         if (!loadPackageParam.packageName.equals("com.android.vending"))
             return;
 
@@ -44,6 +47,23 @@ public class PlayStoreChangelog implements IXposedHookLoadPackage {
             protected void beforeHookedMethod(MethodHookParam param) throws Throwable {
                 // 0 = What's new text, 1 = changelog, 2 = maximum changelog lines
                 param.args[2] = Integer.MAX_VALUE;
+            }
+        });
+
+        /*
+         * Hook MainActivity.onCreate() to go to the 'My Apps' fragment right after the activity is initialized.
+         */
+        Class<?> mainActivityClass = XposedHelpers.findClass("com.google.android.finsky.activities.MainActivity", loadPackageParam.classLoader);
+        XposedHelpers.findAndHookMethod(mainActivityClass, "onCreate", Bundle.class, new XC_MethodHook() {
+            @Override
+            protected void afterHookedMethod(MethodHookParam param) throws Throwable {
+                // Call this.mNavigationManager.goToMyDownloads(FinskyApp.get().getToc())
+                Class<?> finskyAppClass = XposedHelpers.findClass("com.google.android.finsky.FinskyApp", loadPackageParam.classLoader);
+                Object finskyAppInstance = XposedHelpers.callStaticMethod(finskyAppClass, "get");
+                Object dfeTocObj = XposedHelpers.callMethod(finskyAppInstance, "getToc");
+
+                Object mNavigationManager = XposedHelpers.getObjectField(param.thisObject, "mNavigationManager");
+                XposedHelpers.callMethod(mNavigationManager, "goToMyDownloads", dfeTocObj);
             }
         });
     }
