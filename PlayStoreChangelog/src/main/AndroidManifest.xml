@@ -15,5 +15,13 @@
             android:name="xposeddescription"
             android:value="@string/xposed_description" />
 
+        <activity
+            android:name=".SettingsActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity>
+
     </application>
 </manifest>

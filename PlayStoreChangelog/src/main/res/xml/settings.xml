@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+    <PreferenceCategory android:title="@string/pref_general">
+        <CheckBoxPreference
+            android:key="pref_full_changelog"
+            android:title="@string/pref_full_changelog"
+            android:summaryOn="@string/pref_full_changelog_on"
+            android:summaryOff="@string/pref_full_changelog_off"
+            android:defaultValue="true" />
+
+        <CheckBoxPreference
+            android:key="pref_my_apps_default_pane"
+            android:title="@string/pref_my_apps_default_pane"
+            android:summaryOn="@string/pref_my_apps_default_pane_on"
+            android:summaryOff="@string/pref_my_apps_default_pane_off"
+            android:defaultValue="false" />
+    </PreferenceCategory>
+
+    <PreferenceCategory android:title="@string/pref_about">
+        <Preference
+            android:key="pref_about"
+            android:title="@string/app_name"
+            android:summary="@string/pref_about_summary" />
+
+        <Preference
+            android:key="pref_donate"
+            android:title="@string/pref_donate_title"
+            android:summary="@string/pref_donate_summary">
+            <intent
+                android:action="android.intent.action.VIEW"
+                android:data="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&amp;hosted_button_id=ATAND4ZD4HZ62"/>
+        </Preference>
+
+        <Preference
+            android:key="pref_support"
+            android:title="@string/pref_support_title"
+            android:summary="@string/pref_support_summary">
+            <intent
+                android:action="android.intent.action.VIEW"
+                android:data="http://forum.xda-developers.com/xposed/modules/mod-play-store-changelog-changelog-t2922667" />
+        </Preference>
+
+    </PreferenceCategory>
+</PreferenceScreen>
