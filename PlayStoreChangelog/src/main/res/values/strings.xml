@@ -13,6 +13,17 @@
     <string name="pref_my_apps_default_pane_on">Show the My Apps pane when the Play Store gets opened</string>
     <string name="pref_my_apps_default_pane_off">Show the Store Home pane when the Play Store gets opened</string>
 
+    <!-- Other settings -->
+    <string name="pref_other">Other</string>
+
+    <string name="pref_launcher_title">Show launcher icon</string>
+    <string name="pref_launcher_on">Access settings through my launcher</string>
+    <string name="pref_launcher_off">Access settings through Xposed Installer</string>
+
+    <string name="pref_debug_title">Debugging</string>
+    <string name="pref_debug_on">Debug information is shown in the Xposed Log</string>
+    <string name="pref_debug_off">Debug information is not shown in the Xposed Log</string>
+
     <!-- About section -->
     <string name="pref_about">About</string>
     <string name="pref_about_title" translatable="false">Play Store Changelog v%1$s</string>

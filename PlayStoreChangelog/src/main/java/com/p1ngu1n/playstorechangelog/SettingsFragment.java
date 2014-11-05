@@ -40,5 +40,21 @@ public class SettingsFragment extends PreferenceFragment {
 
         // Set the version number in the about screen
         findPreference("pref_about").setTitle(getString(R.string.pref_about_title, BuildConfig.VERSION_NAME));
+        // Set change listener to the 'show in launcher' preference
+        findPreference("pref_launcher").setOnPreferenceChangeListener(changeListenerLauncher);
     }
+
+    /**
+     * Hides or shows the icon in the launcher when the preference changed.
+     */
+    private final Preference.OnPreferenceChangeListener changeListenerLauncher = new Preference.OnPreferenceChangeListener() {
+        public boolean onPreferenceChange(Preference preference, Object newValue) {
+            int componentState = ((Boolean) newValue ? PackageManager.COMPONENT_ENABLED_STATE_ENABLED : PackageManager.COMPONENT_ENABLED_STATE_DISABLED);
+
+            Activity activity = getActivity();
+            ComponentName alias = new ComponentName(activity, "com.p1ngu1n.volumesteps.SettingsActivity-Alias");
+            activity.getPackageManager().setComponentEnabledSetting(alias, componentState, PackageManager.DONT_KILL_APP);
+            return true;
+        }
+    };
 }

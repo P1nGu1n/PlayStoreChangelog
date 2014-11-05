@@ -19,9 +19,22 @@
             android:name=".SettingsActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER"/>
+                <category android:name="de.robv.android.xposed.category.MODULE_SETTINGS"/>
             </intent-filter>
         </activity>
+
+        <!-- Thanks to GermainZ for this alias-trick! -->
+        <activity-alias
+            android:enabled="true"
+            android:name="com.p1ngu1n.playstorechangelog.SettingsActivity-Alias"
+            android:label="@string/app_name"
+            android:icon="@drawable/ic_launcher"
+            android:targetActivity=".SettingsActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity-alias>
 
     </application>
 </manifest>
