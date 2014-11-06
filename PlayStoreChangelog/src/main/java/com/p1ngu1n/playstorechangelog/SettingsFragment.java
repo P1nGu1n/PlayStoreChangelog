@@ -52,7 +52,7 @@ public class SettingsFragment extends PreferenceFragment {
             int componentState = ((Boolean) newValue ? PackageManager.COMPONENT_ENABLED_STATE_ENABLED : PackageManager.COMPONENT_ENABLED_STATE_DISABLED);
 
             Activity activity = getActivity();
-            ComponentName alias = new ComponentName(activity, "com.p1ngu1n.volumesteps.SettingsActivity-Alias");
+            ComponentName alias = new ComponentName(activity, "com.p1ngu1n.playstorechangelog.SettingsActivity-Alias");
             activity.getPackageManager().setComponentEnabledSetting(alias, componentState, PackageManager.DONT_KILL_APP);
             return true;
         }
