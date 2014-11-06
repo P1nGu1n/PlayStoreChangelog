@@ -18,11 +18,14 @@
  */
 package com.p1ngu1n.playstorechangelog;
 
+import android.content.Context;
+import android.content.pm.PackageInfo;
 import android.os.Bundle;
 
 import de.robv.android.xposed.IXposedHookLoadPackage;
 import de.robv.android.xposed.XC_MethodHook;
 import de.robv.android.xposed.XSharedPreferences;
+import de.robv.android.xposed.XposedBridge;
 import de.robv.android.xposed.XposedHelpers;
 import de.robv.android.xposed.callbacks.XC_LoadPackage;
 
@@ -31,9 +34,11 @@ import de.robv.android.xposed.callbacks.XC_LoadPackage;
  */
 public class PlayStoreChangelog implements IXposedHookLoadPackage {
     private XSharedPreferences sharedPreferences;
+    private static final String LOG_TAG = "PSC: ";
     // Preferences and their default values
     public static boolean SHOW_FULL_CHANGELOG = true;
     public static boolean MY_APPS_DEFAULT_PANE = false;
+    public static boolean DEBUGGING = false;
 
     @Override
     public void handleLoadPackage(final XC_LoadPackage.LoadPackageParam loadPackageParam) throws Throwable {
@@ -41,6 +46,15 @@ public class PlayStoreChangelog implements IXposedHookLoadPackage {
             return;
 
         sharedPreferences = new XSharedPreferences(BuildConfig.APPLICATION_ID);
+        refreshPreferences();
+
+        if (DEBUGGING) {
+            Object activityThread = XposedHelpers.callStaticMethod(XposedHelpers.findClass("android.app.ActivityThread", null), "currentActivityThread");
+            Context context = (Context) XposedHelpers.callMethod(activityThread, "getSystemContext");
+            PackageInfo piPlayStore = context.getPackageManager().getPackageInfo(loadPackageParam.packageName, 0);
+            XposedBridge.log(LOG_TAG + "Play Store Version: " + piPlayStore.versionName + " (" + piPlayStore.versionCode + ")");
+            XposedBridge.log(LOG_TAG + "Module version: " + BuildConfig.VERSION_NAME + " (" + BuildConfig.VERSION_CODE + ")");
+        }
 
         /*
          * DetailsTextBlock is the block containing the "What's New" heading and the changelog.
@@ -80,9 +94,13 @@ public class PlayStoreChangelog implements IXposedHookLoadPackage {
         });
     }
 
+    /**
+     * Refresh the preferences.
+     */
     private void refreshPreferences() {
         sharedPreferences.reload();
         SHOW_FULL_CHANGELOG = sharedPreferences.getBoolean("pref_full_changelog", SHOW_FULL_CHANGELOG);
         MY_APPS_DEFAULT_PANE = sharedPreferences.getBoolean("pref_my_apps_default_pane", MY_APPS_DEFAULT_PANE);
+        DEBUGGING = sharedPreferences.getBoolean("pref_debug", DEBUGGING);
     }
 }
