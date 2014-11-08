@@ -65,7 +65,7 @@ public class SettingsFragment extends PreferenceFragment {
         super.onPause();
 
         // Set preferences file permissions to be world readable
-        File sharedPrefsDir = new File(getActivity().getFilesDir(), "../shared_prefs");
+        File sharedPrefsDir = new File(getActivity().getApplicationInfo().dataDir, "shared_prefs");
         File sharedPrefsFile = new File(sharedPrefsDir, getPreferenceManager().getSharedPreferencesName() + ".xml");
         if (sharedPrefsFile.exists()) {
             sharedPrefsFile.setReadable(true, false);
