@@ -33,7 +33,7 @@ import de.robv.android.xposed.callbacks.XC_LoadPackage;
  * The class to be loaded by Xposed.
  */
 public class PlayStoreChangelog implements IXposedHookLoadPackage {
-    private XSharedPreferences sharedPreferences;
+    private XSharedPreferences prefs;
     private static final String LOG_TAG = "PSC: ";
     // Preferences and their default values
     public static boolean SHOW_FULL_CHANGELOG = true;
@@ -45,7 +45,7 @@ public class PlayStoreChangelog implements IXposedHookLoadPackage {
         if (!loadPackageParam.packageName.equals("com.android.vending"))
             return;
 
-        sharedPreferences = new XSharedPreferences(BuildConfig.APPLICATION_ID);
+        prefs = new XSharedPreferences(BuildConfig.APPLICATION_ID);
         refreshPreferences();
 
         if (DEBUGGING) {
@@ -98,9 +98,9 @@ public class PlayStoreChangelog implements IXposedHookLoadPackage {
      * Refresh the preferences.
      */
     private void refreshPreferences() {
-        sharedPreferences.reload();
-        SHOW_FULL_CHANGELOG = sharedPreferences.getBoolean("pref_full_changelog", SHOW_FULL_CHANGELOG);
-        MY_APPS_DEFAULT_PANE = sharedPreferences.getBoolean("pref_my_apps_default_pane", MY_APPS_DEFAULT_PANE);
-        DEBUGGING = sharedPreferences.getBoolean("pref_debug", DEBUGGING);
+        prefs.reload();
+        SHOW_FULL_CHANGELOG = prefs.getBoolean("pref_full_changelog", SHOW_FULL_CHANGELOG);
+        MY_APPS_DEFAULT_PANE = prefs.getBoolean("pref_my_apps_default_pane", MY_APPS_DEFAULT_PANE);
+        DEBUGGING = prefs.getBoolean("pref_debug", DEBUGGING);
     }
 }
