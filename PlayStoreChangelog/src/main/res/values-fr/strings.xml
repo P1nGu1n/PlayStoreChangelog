@@ -5,11 +5,11 @@
     <!-- General settings -->
     <string name="pref_general">Général</string>
 
-    <string name="pref_full_changelog">Afficher le changelog complet</string>
+    <string name="pref_full_changelog">Changelog complet</string>
     <string name="pref_full_changelog_on">Voir le changelog complet de l\'appli</string>
     <string name="pref_full_changelog_off">Voir les quatre premières lignes du changelog de l\'appli</string>
 
-    <string name="pref_my_apps_default_pane">L\'onglet Mes applications par défaut</string>
+    <string name="pref_my_apps_default_pane">Onglet Mes applications par défaut</string>
     <string name="pref_my_apps_default_pane_on">Afficher l\'onglet Mes applications à l\'ouverture du Play Store</string>
     <string name="pref_my_apps_default_pane_off">Afficher l\'onglet Accueil à l\'ouverture du Play Store</string>
 
