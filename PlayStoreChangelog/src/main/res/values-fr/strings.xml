@@ -1,0 +1,37 @@
+<resources>
+    <string name="app_name">Play Store Changelog</string>
+    <string name="xposed_description">Toujours afficher le changelog complet d\'une appli au lieu des quatre premières lignes.</string>
+
+    <!-- General settings -->
+    <string name="pref_general">Général</string>
+
+    <string name="pref_full_changelog">Afficher le changelog complet</string>
+    <string name="pref_full_changelog_on">Voir le changelog complet de l\'appli</string>
+    <string name="pref_full_changelog_off">Voir les quatre premières lignes du changelog de l\'appli</string>
+
+    <string name="pref_my_apps_default_pane">L\'onglet Mes applications par défaut</string>
+    <string name="pref_my_apps_default_pane_on">Afficher l\'onglet Mes applications à l\'ouverture du Play Store</string>
+    <string name="pref_my_apps_default_pane_off">Afficher l\'onglet Accueil à l\'ouverture du Play Store</string>
+
+    <!-- Other settings -->
+    <string name="pref_other">Autre</string>
+
+    <string name="pref_launcher_title">Afficher l\'icône</string>
+    <string name="pref_launcher_on">Accéder aux paramètres via le lanceur</string>
+    <string name="pref_launcher_off">Accéder aux paramètres via Xposed Installer</string>
+
+    <string name="pref_debug_title">Débogage</string>
+    <string name="pref_debug_on">Activer la journalisation dans l\'onglet Log Xposed</string>
+    <string name="pref_debug_off">Désactiver la journalisation dans l\'onglet Log Xposed</string>
+
+    <!-- About section -->
+    <string name="pref_about">À propos</string>
+
+    <string name="pref_about_summary">Play Store Changelog est publié sous la licence GPLv3.</string>
+
+    <string name="pref_donate_title">Donation</string>
+    <string name="pref_donate_summary">Soutenez-moi, achetez-moi une bière via PayPal. Les dons sont très appréciés.</string>
+
+    <string name="pref_support_title">Aide</string>
+    <string name="pref_support_summary">Accéder au topic sur XDA, veuillez d\'abord lire le premier post si vous avez des problèmes.</string>
+</resources>
