@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Play Store Changelog</string>
     <string name="xposed_description">Always display an app\'s full changelog instead of the first four lines.</string>
@@ -26,7 +27,8 @@
 
     <!-- About section -->
     <string name="pref_about">About</string>
-    <string name="pref_about_title" translatable="false">Play Store Changelog v%1$s</string>
+
+    <string name="pref_about_title">Play Store Changelog v%1$s</string>
     <string name="pref_about_summary">Play Store Changelog is released under the GPLv3 license.</string>
 
     <string name="pref_donate_title">Donate</string>

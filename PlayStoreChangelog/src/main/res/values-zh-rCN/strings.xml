@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">谷歌Play商店更新日志</string>
+    <string name="xposed_description">使Play商店的应用能显示完整的更新日志而不仅是 日志的前四行。</string>
+
+    <!-- General settings -->
+    <string name="pref_general">一般</string>
+
+    <string name="pref_full_changelog">显示全部更新日志</string>
+    <string name="pref_full_changelog_on">显示应用完整更新日志</string>
+    <string name="pref_full_changelog_off">仅显示应用更新日志的前四行</string>
+
+    <string name="pref_my_apps_default_pane">更换Play商店默认启动界面</string>
+    <string name="pref_my_apps_default_pane_on">启动Play商店时显示我的应 用</string>
+    <string name="pref_my_apps_default_pane_off">启动Play商店时显示默认 界面</string>
+
+    <!-- Other settings -->
+    <string name="pref_other">其他</string>
+
+    <string name="pref_launcher_title">显示桌面图标</string>
+    <string name="pref_launcher_on">允许从桌面启动</string>
+    <string name="pref_launcher_off">仅允许从Xposed中启动</string>
+
+    <string name="pref_debug_title">调试</string>
+    <string name="pref_debug_on">调试信息将会出现在Xposed日志中</string>
+    <string name="pref_debug_off">调试信息将不会出现在Xposed日志中</string>
+
+    <!-- About section -->
+    <string name="pref_about">关于</string>
+
+    <string name="pref_about_title">谷歌Play商店更新日志 v%1$s</string>
+    <string name="pref_about_summary">谷歌Play商店更新日志遵循GPLv3协议。</string>
+
+    <string name="pref_donate_title">捐赠</string>
+    <string name="pref_donate_summary">支持我，请用Paypal为我买一杯啤酒。这是一 种值得赞赏的行为。</string>
+
+    <string name="pref_support_title">支持</string>
+    <string name="pref_support_summary">点击进入XDA论坛所在帖子，如果您遇到问题请 先阅读作者的发言。</string>
+</resources>
