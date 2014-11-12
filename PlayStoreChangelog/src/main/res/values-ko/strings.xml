@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">플레이 스토어 새로운 기능</string>
+    <string name="xposed_description">맨 처음 넷째 줄 대신에 항상 앱의 새로운 기능을 완전히 표시합니다.</string>
+
+    <!-- General settings -->
+    <string name="pref_general">기본</string>
+
+    <string name="pref_full_changelog">새로운 기능을 완전히 보기</string>
+    <string name="pref_full_changelog_on">앱의 새로운 기능을 완전히 표시하기</string>
+    <string name="pref_full_changelog_off">앱의 새로운 기능을 맨 처음 넷째 줄에 표시하기</string>
+
+    <string name="pref_my_apps_default_pane">내 앱을 기본 창으로 변경하기</string>
+    <string name="pref_my_apps_default_pane_on">플레이 스토어가 열렸을 때 내 앱 창을 보여줍니다</string>
+    <string name="pref_my_apps_default_pane_off">플레이 스토어가 열렸을 때 스토어 홈 창을 보여줍니다</string>
+
+    <!-- Other settings -->
+    <string name="pref_other">기타</string>
+
+    <string name="pref_launcher_title">런처 아이콘 보기</string>
+    <string name="pref_launcher_on">내 런처를 통한 설정 접근하기</string>
+    <string name="pref_launcher_off">Xposed Installer를 통한 설정 접근하기</string>
+
+    <string name="pref_debug_title">디버깅</string>
+    <string name="pref_debug_on">Xposed 기록에 디버그 정보 표시하기</string>
+    <string name="pref_debug_off">Xposed 기록에 디버그 정보 표시하지 않기</string>
+
+    <!-- About section -->
+    <string name="pref_about">정보</string>
+
+    <string name="pref_about_title">플레이 스토어 새로운 기능 v%1$s</string>
+    <string name="pref_about_summary">플레이 스토어 새로운 기능은 GPLv3 라이센스에 속해져 배포됩니다.</string>
+
+    <string name="pref_donate_title">기부</string>
+    <string name="pref_donate_summary">저를 도와주세요 , 저에게 페이팔을 이용하여 맥주를 사주세요. 기부는 매우 고마운 겁니다.</string>
+
+    <string name="pref_support_title">지원</string>
+    <string name="pref_support_summary">Navigate to the XDA-스레드를 방문해주세요 , 문제 요소가 있으면 먼저 OP를 읽어주세요.</string>
+</resources>
