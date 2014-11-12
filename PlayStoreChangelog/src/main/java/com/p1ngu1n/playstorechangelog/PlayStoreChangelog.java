@@ -20,7 +20,6 @@ package com.p1ngu1n.playstorechangelog;
 
 import android.content.Context;
 import android.content.pm.PackageInfo;
-import android.os.Bundle;
 
 import de.robv.android.xposed.IXposedHookLoadPackage;
 import de.robv.android.xposed.XC_MethodHook;
@@ -74,21 +73,62 @@ public class PlayStoreChangelog implements IXposedHookLoadPackage {
         });
 
         /*
-         * Hook MainActivity.onCreate() to go to the 'My Apps' fragment right after the activity is initialized.
+         * MainActivity.handleIntent() does exactly what the name says, it handles intents.
+         * It checks what to do with the intent, for example open an app's details page.
+         *
+         * The last check is to load the default pane, it checks if there are any backstack
+         * entries. If there are none, it'll show the default pane, but we intercept this
+         * and show the My Apps page.
+         *
+         * We do this by creating temporary fields which we remove afterwards so the other
+         * hooked methods can detect whether they were called by this method.
          */
         Class<?> mainActivityClass = XposedHelpers.findClass("com.google.android.finsky.activities.MainActivity", loadPackageParam.classLoader);
-        XposedHelpers.findAndHookMethod(mainActivityClass, "onCreate", Bundle.class, new XC_MethodHook() {
+        XposedHelpers.findAndHookMethod(mainActivityClass, "handleIntent", new XC_MethodHook() {
             @Override
-            protected void afterHookedMethod(MethodHookParam param) throws Throwable {
+            protected void beforeHookedMethod(MethodHookParam param) throws Throwable {
                 refreshPreferences();
                 if (MY_APPS_DEFAULT_PANE) {
-                    // Call this.mNavigationManager.goToMyDownloads(FinskyApp.get().getToc())
-                    Class<?> finskyAppClass = XposedHelpers.findClass("com.google.android.finsky.FinskyApp", loadPackageParam.classLoader);
-                    Object finskyAppInstance = XposedHelpers.callStaticMethod(finskyAppClass, "get");
-                    Object dfeTocObj = XposedHelpers.callMethod(finskyAppInstance, "getToc");
-
                     Object mNavigationManager = XposedHelpers.getObjectField(param.thisObject, "mNavigationManager");
-                    XposedHelpers.callMethod(mNavigationManager, "goToMyDownloads", dfeTocObj);
+                    XposedHelpers.setAdditionalInstanceField(mNavigationManager, "handlingIntent", true);
+                }
+            }
+
+            @Override
+            protected void afterHookedMethod(MethodHookParam param) throws Throwable {
+                Object mNavigationManager = XposedHelpers.getObjectField(param.thisObject, "mNavigationManager");
+                XposedHelpers.removeAdditionalInstanceField(mNavigationManager, "handlingIntent");
+                XposedHelpers.removeAdditionalInstanceField(mNavigationManager, "calledIsBackStackEmpty");
+            }
+        });
+
+        /*
+         * After we checked whether the method was called from handleIntent() and the result of this method
+         * was positive, we create a temporary field to store this so goToAggregatedHome() can detect this.
+         */
+        Class<?> navigationManagerClass = XposedHelpers.findClass("com.google.android.finsky.navigationmanager.NavigationManager", loadPackageParam.classLoader);
+        XposedHelpers.findAndHookMethod(navigationManagerClass, "isBackStackEmpty", new XC_MethodHook() {
+            @Override
+            protected void afterHookedMethod(MethodHookParam param) throws Throwable {
+                Boolean handlingIntent = (Boolean) XposedHelpers.getAdditionalInstanceField(param.thisObject, "handlingIntent");
+                if (handlingIntent != null && handlingIntent && (Boolean) param.getResult()) {
+                    XposedHelpers.setAdditionalInstanceField(param.thisObject, "calledIsBackStackEmpty", true);
+                }
+            }
+        });
+
+        /*
+         * After we checked whether the method was called from handleIntent() and after isBackStackEmpty(),
+         * we'll show the My Apps fragment.
+         */
+        Class<?> dfeTocClass = XposedHelpers.findClass("com.google.android.finsky.api.model.DfeToc", loadPackageParam.classLoader);
+        XposedHelpers.findAndHookMethod(navigationManagerClass, "goToAggregatedHome", dfeTocClass, new XC_MethodHook() {
+            @Override
+            protected void beforeHookedMethod(MethodHookParam param) throws Throwable {
+                Boolean calledIsBackStackEmpty = (Boolean) XposedHelpers.getAdditionalInstanceField(param.thisObject, "calledIsBackStackEmpty");
+                if (calledIsBackStackEmpty != null && calledIsBackStackEmpty) {
+                    XposedHelpers.callMethod(param.thisObject, "goToMyDownloads", param.args[0]);
+                    param.setResult(null);
                 }
             }
         });
