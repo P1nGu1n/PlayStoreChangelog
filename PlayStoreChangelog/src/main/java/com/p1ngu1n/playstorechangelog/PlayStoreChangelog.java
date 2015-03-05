@@ -23,6 +23,7 @@ import android.content.pm.PackageInfo;
 
 import de.robv.android.xposed.IXposedHookLoadPackage;
 import de.robv.android.xposed.XC_MethodHook;
+import de.robv.android.xposed.XC_MethodReplacement;
 import de.robv.android.xposed.XSharedPreferences;
 import de.robv.android.xposed.XposedBridge;
 import de.robv.android.xposed.XposedHelpers;
@@ -47,10 +48,12 @@ public class PlayStoreChangelog implements IXposedHookLoadPackage {
         prefs = new XSharedPreferences(BuildConfig.APPLICATION_ID);
         refreshPreferences();
 
+        Object activityThread = XposedHelpers.callStaticMethod(XposedHelpers.findClass("android.app.ActivityThread", null), "currentActivityThread");
+        Context context = (Context) XposedHelpers.callMethod(activityThread, "getSystemContext");
+        PackageInfo piPlayStore = context.getPackageManager().getPackageInfo(loadPackageParam.packageName, 0);
+        final int playStoreVersion = piPlayStore.versionCode;
+
         if (DEBUGGING) {
-            Object activityThread = XposedHelpers.callStaticMethod(XposedHelpers.findClass("android.app.ActivityThread", null), "currentActivityThread");
-            Context context = (Context) XposedHelpers.callMethod(activityThread, "getSystemContext");
-            PackageInfo piPlayStore = context.getPackageManager().getPackageInfo(loadPackageParam.packageName, 0);
             XposedBridge.log(LOG_TAG + "Play Store Version: " + piPlayStore.versionName + " (" + piPlayStore.versionCode + ")");
             XposedBridge.log(LOG_TAG + "Module version: " + BuildConfig.VERSION_NAME + " (" + BuildConfig.VERSION_CODE + ")");
         }
@@ -122,14 +125,22 @@ public class PlayStoreChangelog implements IXposedHookLoadPackage {
          * we'll show the My Apps fragment.
          */
         Class<?> dfeTocClass = XposedHelpers.findClass("com.google.android.finsky.api.model.DfeToc", loadPackageParam.classLoader);
-        XposedHelpers.findAndHookMethod(navigationManagerClass, "goToAggregatedHome", dfeTocClass, new XC_MethodHook() {
+        XposedHelpers.findAndHookMethod(navigationManagerClass, "goToAggregatedHome", dfeTocClass, new XC_MethodReplacement() {
             @Override
-            protected void beforeHookedMethod(MethodHookParam param) throws Throwable {
+            protected Object replaceHookedMethod(MethodHookParam param) throws Throwable {
                 Boolean calledIsBackStackEmpty = (Boolean) XposedHelpers.getAdditionalInstanceField(param.thisObject, "calledIsBackStackEmpty");
                 if (calledIsBackStackEmpty != null && calledIsBackStackEmpty) {
-                    XposedHelpers.callMethod(param.thisObject, "goToMyDownloads", param.args[0]);
-                    param.setResult(null);
+                    // v5.3.5 and up has an extra parameter, indicating whether all apps should be updated
+                    if (playStoreVersion >= 80330500) {
+                        XposedHelpers.callMethod(param.thisObject, "goToMyDownloads", param.args[0], false);
+                    } else {
+                        XposedHelpers.callMethod(param.thisObject, "goToMyDownloads", param.args[0]);
+                    }
+                } else {
+
+                    XposedBridge.invokeOriginalMethod(param.method, param.thisObject, param.args);
                 }
+                return null;
             }
         });
     }
