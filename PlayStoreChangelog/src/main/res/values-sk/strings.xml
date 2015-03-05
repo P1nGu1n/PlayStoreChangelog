@@ -23,7 +23,7 @@
 
     <string name="pref_debug_title">Ladenie</string>
     <string name="pref_debug_on">Ladiace informácie budú zobrazené v Xposed zázname</string>
-    <string name="pref_debug_off"Ladiace informácie nebudú zobrazené v Xposed zázname</string>
+    <string name="pref_debug_off">Ladiace informácie nebudú zobrazené v Xposed zázname</string>
 
     <!-- About section -->
     <string name="pref_about">O aplikácii</string>
