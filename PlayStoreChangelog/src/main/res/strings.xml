@@ -1,0 +1,39 @@
++<?xml version="1.0" encoding="utf-8"?>
++<resources>
++    <string name="app_name">Play Store Changelog</string>
++    <string name="xposed_description">Vždy zobrazit celý seznam změn namísto pouhých čtyř prvních řádek.</string>
++
++    <!-- General settings -->
++    <string name="pref_general">Hlavní</string>
++
++    <string name="pref_full_changelog">Zobrazit celý seznam změn</string>
++    <string name="pref_full_changelog_on">Zobrazit celý seznam změn aplikace</string>
++    <string name="pref_full_changelog_off">Zobrazit první 4 řádky seznamu změn aplikace</string>
++
++    <string name="pref_my_apps_default_pane">Změnit defaultní záložku na Moje aplikace</string>
++    <string name="pref_my_apps_default_pane_on">Zobrazit Moje aplikace při otevření obchodu</string>
++    <string name="pref_my_apps_default_pane_off">Zobrazit domácí obrazovku při otevření obchodu</string>
++
++    <!-- Other settings -->
++    <string name="pref_other">Ostatní</string>
++
++    <string name="pref_launcher_title">Zobrazit ikonu v menu</string>
++    <string name="pref_launcher_on">Přístup k nastavení skrze ikonu v menu</string>
++    <string name="pref_launcher_off">Přístup k nastavení skrze Xposed rozhraní</string>
++
++    <string name="pref_debug_title">Debugging</string>
++    <string name="pref_debug_on">Debug informace jsou zobrazovány v Xposed logu</string>
++    <string name="pref_debug_off">Debug informace nejsou zobrazovány v Xposed logu</string>
++
++    <!-- About section -->
++    <string name="pref_about">O aplikaci</string>
++
++    <string name="pref_about_title">Play Store Changelog v%1$s</string>
++    <string name="pref_about_summary">Play Store Changelog je vydáván pod GPLv3 licencí.</string>
++
++    <string name="pref_donate_title">Přispět</string>
++    <string name="pref_donate_summary">Podpoř mě a kup mi pivo přes PayPal. Příspěvky jsou vysoce ceněny.</string>
++
++    <string name="pref_support_title">Podpora</string>
++    <string name="pref_support_summary">Přejít do vlákna na XDA, zhlédni nejdříve hlavní příspěvek, pokud se potýkáš s problémy.</string>
++</resources>
