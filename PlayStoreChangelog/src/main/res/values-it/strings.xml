@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Play Store Changelog</string>
+    <string name="xposed_description">Mostra sempre il changelog completo di un\'app al posto delle prime quattro linee.</string>
+
+    <!-- General settings -->
+    <string name="pref_general">Generale</string>
+
+    <string name="pref_full_changelog">Mostra changelog completo</string>
+    <string name="pref_full_changelog_on">Mostra il changelog completo di un\'app</string>
+    <string name="pref_full_changelog_off">Mostra le prime quattro linee del changelog di un\'app</string>
+
+    <string name="pref_my_apps_default_pane">Cambia scheda predefinita in Le mie App</string>
+    <string name="pref_my_apps_default_pane_on">Mostra la scheda Le mie App quando il Play Store viene aperto</string>
+    <string name="pref_my_apps_default_pane_off">Mostra la scheda Stpre Home quando il Play Store viene aperto</string>
+
+    <!-- Other settings -->
+    <string name="pref_other">Altro</string>
+
+    <string name="pref_launcher_title">Mostra icona nel launcher</string>
+    <string name="pref_launcher_on">Accedi alle impostazioni dal mio launcher</string>
+    <string name="pref_launcher_off">Accedi alle impostazioni attraverso Xposed Installer</string>
+
+    <string name="pref_debug_title">Debugging</string>
+      <string name="pref_debug_on">Informazioni di debug sono mostrate nel Log di Xposed</string>
+    <string name="pref_debug_off">Informazioni di debug non sono mostrate nel Log di Xposed</string>
+
+    <!-- About section -->
+    <string name="pref_about">Info</string>
+
+    <string name="pref_about_title">Play Store Changelog v%1$s</string>
+    <string name="pref_about_summary">Play Store Changelog è rilasciato sotto licenza GPLv3.</string>
+
+    <string name="pref_donate_title">Dona</string>
+    <string name="pref_donate_summary">Supportami, offrimi una birra usando PayPal. Le donazioni sono altamente apprezzate.</string>
+
+    <string name="pref_support_title">Supporto</string>
+    <string name="pref_support_summary">Naviga sul thread XDA, per favore leggi prima l\'OP se stai avendo problemi.</string>
+</resources>
