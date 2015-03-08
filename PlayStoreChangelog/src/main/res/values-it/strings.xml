@@ -12,7 +12,7 @@
 
     <string name="pref_my_apps_default_pane">Cambia scheda predefinita in Le mie App</string>
     <string name="pref_my_apps_default_pane_on">Mostra la scheda Le mie App quando il Play Store viene aperto</string>
-    <string name="pref_my_apps_default_pane_off">Mostra la scheda Stpre Home quando il Play Store viene aperto</string>
+    <string name="pref_my_apps_default_pane_off">Mostra la scheda Home page Store quando il Play Store viene aperto</string>
 
     <!-- Other settings -->
     <string name="pref_other">Altro</string>
