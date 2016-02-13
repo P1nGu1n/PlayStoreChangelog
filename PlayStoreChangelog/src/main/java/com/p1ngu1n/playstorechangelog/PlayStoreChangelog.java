@@ -63,8 +63,9 @@ public class PlayStoreChangelog implements IXposedHookLoadPackage {
          * The maximum number of lines of the changelog gets set to the number passed as a parameter to the 'bind' method.
          * This mod changes this parameter to the maximum integer value, so the changelog will always be fully shown.
          */
+        String detailsTextBlockMethodBind = (playStoreVersion < 80621000 ? "bind" : "a"); // v6.2.10 added obfuscation
         Class<?> detailsTextBlockClass = XposedHelpers.findClass("com.google.android.finsky.layout.DetailsTextBlock", loadPackageParam.classLoader);
-        XposedHelpers.findAndHookMethod(detailsTextBlockClass, "bind", CharSequence.class, CharSequence.class, int.class, new XC_MethodHook() {
+        XposedHelpers.findAndHookMethod(detailsTextBlockClass, detailsTextBlockMethodBind, CharSequence.class, CharSequence.class, int.class, new XC_MethodHook() {
             @Override
             protected void beforeHookedMethod(MethodHookParam param) throws Throwable {
                 refreshPreferences();
@@ -137,7 +138,6 @@ public class PlayStoreChangelog implements IXposedHookLoadPackage {
                         XposedHelpers.callMethod(param.thisObject, "goToMyDownloads", param.args[0]);
                     }
                 } else {
-
                     XposedBridge.invokeOriginalMethod(param.method, param.thisObject, param.args);
                 }
                 return null;
