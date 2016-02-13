@@ -1,13 +1,13 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 19
-    buildToolsVersion "21.1.2"
+    compileSdkVersion 23
+    buildToolsVersion "23.0.2"
 
     defaultConfig {
         applicationId "com.p1ngu1n.playstorechangelog"
         minSdkVersion 15
-        targetSdkVersion 19
+        targetSdkVersion 23
         versionCode 5
         versionName "1.1.3"
     }
