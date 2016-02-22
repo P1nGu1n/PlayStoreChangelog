@@ -58,14 +58,15 @@ public class PlayStoreChangelog implements IXposedHookLoadPackage {
             XposedBridge.log(LOG_TAG + "Module version: " + BuildConfig.VERSION_NAME + " (" + BuildConfig.VERSION_CODE + ")");
         }
 
+        final Obfuscator obfsc = new Obfuscator(playStoreVersion);
+
         /*
          * DetailsTextBlock is the block containing the "What's New" heading and the changelog.
          * The maximum number of lines of the changelog gets set to the number passed as a parameter to the 'bind' method.
          * This mod changes this parameter to the maximum integer value, so the changelog will always be fully shown.
          */
-        String detailsTextBlockMethodBind = (playStoreVersion < 80621000 ? "bind" : "a"); // v6.2.10 added obfuscation
         Class<?> detailsTextBlockClass = XposedHelpers.findClass("com.google.android.finsky.layout.DetailsTextBlock", loadPackageParam.classLoader);
-        XposedHelpers.findAndHookMethod(detailsTextBlockClass, detailsTextBlockMethodBind, CharSequence.class, CharSequence.class, int.class, new XC_MethodHook() {
+        XposedHelpers.findAndHookMethod(detailsTextBlockClass, obfsc.detailsTextBlockBind, CharSequence.class, CharSequence.class, int.class, new XC_MethodHook() {
             @Override
             protected void beforeHookedMethod(MethodHookParam param) throws Throwable {
                 refreshPreferences();
@@ -88,19 +89,19 @@ public class PlayStoreChangelog implements IXposedHookLoadPackage {
          * hooked methods can detect whether they were called by this method.
          */
         Class<?> mainActivityClass = XposedHelpers.findClass("com.google.android.finsky.activities.MainActivity", loadPackageParam.classLoader);
-        XposedHelpers.findAndHookMethod(mainActivityClass, "handleIntent", new XC_MethodHook() {
+        XposedHelpers.findAndHookMethod(mainActivityClass, obfsc.mainActHandleIntent, new XC_MethodHook() {
             @Override
             protected void beforeHookedMethod(MethodHookParam param) throws Throwable {
                 refreshPreferences();
                 if (myAppsDefaultPane) {
-                    Object mNavigationManager = XposedHelpers.getObjectField(param.thisObject, "mNavigationManager");
+                    Object mNavigationManager = XposedHelpers.getObjectField(param.thisObject, obfsc.mainActNavManager);
                     XposedHelpers.setAdditionalInstanceField(mNavigationManager, "handlingIntent", true);
                 }
             }
 
             @Override
             protected void afterHookedMethod(MethodHookParam param) throws Throwable {
-                Object mNavigationManager = XposedHelpers.getObjectField(param.thisObject, "mNavigationManager");
+                Object mNavigationManager = XposedHelpers.getObjectField(param.thisObject, obfsc.mainActNavManager);
                 XposedHelpers.removeAdditionalInstanceField(mNavigationManager, "handlingIntent");
                 XposedHelpers.removeAdditionalInstanceField(mNavigationManager, "calledIsBackStackEmpty");
             }
@@ -110,8 +111,8 @@ public class PlayStoreChangelog implements IXposedHookLoadPackage {
          * After we checked whether the method was called from handleIntent() and the result of this method
          * was positive, we create a temporary field to store this so goToAggregatedHome() can detect this.
          */
-        Class<?> navigationManagerClass = XposedHelpers.findClass("com.google.android.finsky.navigationmanager.NavigationManager", loadPackageParam.classLoader);
-        XposedHelpers.findAndHookMethod(navigationManagerClass, "isBackStackEmpty", new XC_MethodHook() {
+        Class<?> navigationManagerClass = XposedHelpers.findClass("com.google.android.finsky.navigationmanager." + obfsc.navManager, loadPackageParam.classLoader);
+        XposedHelpers.findAndHookMethod(navigationManagerClass, obfsc.navManagerIsBackStackEmpty, new XC_MethodHook() {
             @Override
             protected void afterHookedMethod(MethodHookParam param) throws Throwable {
                 Boolean handlingIntent = (Boolean) XposedHelpers.getAdditionalInstanceField(param.thisObject, "handlingIntent");
@@ -126,16 +127,16 @@ public class PlayStoreChangelog implements IXposedHookLoadPackage {
          * we'll show the My Apps fragment.
          */
         Class<?> dfeTocClass = XposedHelpers.findClass("com.google.android.finsky.api.model.DfeToc", loadPackageParam.classLoader);
-        XposedHelpers.findAndHookMethod(navigationManagerClass, "goToAggregatedHome", dfeTocClass, new XC_MethodReplacement() {
+        XposedHelpers.findAndHookMethod(navigationManagerClass, obfsc.navManagerGoToAggregatedHome, dfeTocClass, new XC_MethodReplacement() {
             @Override
             protected Object replaceHookedMethod(MethodHookParam param) throws Throwable {
                 Boolean calledIsBackStackEmpty = (Boolean) XposedHelpers.getAdditionalInstanceField(param.thisObject, "calledIsBackStackEmpty");
                 if (calledIsBackStackEmpty != null && calledIsBackStackEmpty) {
                     // v5.3.5 and up has an extra parameter, indicating whether all apps should be updated
                     if (playStoreVersion >= 80330500) {
-                        XposedHelpers.callMethod(param.thisObject, "goToMyDownloads", param.args[0], false);
+                        XposedHelpers.callMethod(param.thisObject, obfsc.navManagerGoToMyDownloads, param.args[0], false);
                     } else {
-                        XposedHelpers.callMethod(param.thisObject, "goToMyDownloads", param.args[0]);
+                        XposedHelpers.callMethod(param.thisObject, obfsc.navManagerGoToMyDownloads, param.args[0]);
                     }
                 } else {
                     XposedBridge.invokeOriginalMethod(param.method, param.thisObject, param.args);
