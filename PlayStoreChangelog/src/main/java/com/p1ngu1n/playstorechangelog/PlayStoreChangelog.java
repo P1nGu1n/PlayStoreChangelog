@@ -33,12 +33,12 @@ import de.robv.android.xposed.callbacks.XC_LoadPackage;
  * The class to be loaded by Xposed.
  */
 public class PlayStoreChangelog implements IXposedHookLoadPackage {
-    private XSharedPreferences prefs;
     private static final String LOG_TAG = "PSC: ";
     // Preferences and their default values
-    public static boolean SHOW_FULL_CHANGELOG = true;
-    public static boolean MY_APPS_DEFAULT_PANE = false;
-    public static boolean DEBUGGING = false;
+    private XSharedPreferences prefs;
+    public boolean showFullChangelog = true;
+    public boolean myAppsDefaultPane = false;
+    public boolean debugging = false;
 
     @Override
     public void handleLoadPackage(final XC_LoadPackage.LoadPackageParam loadPackageParam) throws Throwable {
@@ -53,7 +53,7 @@ public class PlayStoreChangelog implements IXposedHookLoadPackage {
         PackageInfo piPlayStore = context.getPackageManager().getPackageInfo(loadPackageParam.packageName, 0);
         final int playStoreVersion = piPlayStore.versionCode;
 
-        if (DEBUGGING) {
+        if (debugging) {
             XposedBridge.log(LOG_TAG + "Play Store Version: " + piPlayStore.versionName + " (" + piPlayStore.versionCode + ")");
             XposedBridge.log(LOG_TAG + "Module version: " + BuildConfig.VERSION_NAME + " (" + BuildConfig.VERSION_CODE + ")");
         }
@@ -69,7 +69,7 @@ public class PlayStoreChangelog implements IXposedHookLoadPackage {
             @Override
             protected void beforeHookedMethod(MethodHookParam param) throws Throwable {
                 refreshPreferences();
-                if (SHOW_FULL_CHANGELOG) {
+                if (showFullChangelog) {
                     // 0 = What's new text, 1 = changelog, 2 = maximum changelog lines
                     param.args[2] = Integer.MAX_VALUE;
                 }
@@ -92,7 +92,7 @@ public class PlayStoreChangelog implements IXposedHookLoadPackage {
             @Override
             protected void beforeHookedMethod(MethodHookParam param) throws Throwable {
                 refreshPreferences();
-                if (MY_APPS_DEFAULT_PANE) {
+                if (myAppsDefaultPane) {
                     Object mNavigationManager = XposedHelpers.getObjectField(param.thisObject, "mNavigationManager");
                     XposedHelpers.setAdditionalInstanceField(mNavigationManager, "handlingIntent", true);
                 }
@@ -150,8 +150,8 @@ public class PlayStoreChangelog implements IXposedHookLoadPackage {
      */
     private void refreshPreferences() {
         prefs.reload();
-        SHOW_FULL_CHANGELOG = prefs.getBoolean("pref_full_changelog", SHOW_FULL_CHANGELOG);
-        MY_APPS_DEFAULT_PANE = prefs.getBoolean("pref_my_apps_default_pane", MY_APPS_DEFAULT_PANE);
-        DEBUGGING = prefs.getBoolean("pref_debug", DEBUGGING);
+        showFullChangelog = prefs.getBoolean("pref_full_changelog", showFullChangelog);
+        myAppsDefaultPane = prefs.getBoolean("pref_my_apps_default_pane", myAppsDefaultPane);
+        debugging = prefs.getBoolean("pref_debug", debugging);
     }
 }
