@@ -23,6 +23,7 @@ package com.p1ngu1n.playstorechangelog;
  */
 public class Obfuscator {
     public static final int V6_2_10 = 80621000;
+    public static final int V6_3_13_B = 80631300;
 
     // com.google.android.finsky.layout.DetailsTextBlock > method bind(CharSequence, CharSequence, int)
     public String detailsTextBlockBind;
@@ -48,6 +49,9 @@ public class Obfuscator {
             navManagerIsBackStackEmpty = "e";
             navManagerGoToAggregatedHome = "a";
             navManagerGoToMyDownloads = "a";
+            if (version >= V6_3_13_B) {
+                mainActNavManager = "q";
+            }
         } else {
             detailsTextBlockBind = "bind";
             mainActHandleIntent = "handleIntent";
