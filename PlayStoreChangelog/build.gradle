@@ -8,8 +8,8 @@ android {
         applicationId "com.p1ngu1n.playstorechangelog"
         minSdkVersion 15
         targetSdkVersion 23
-        versionCode 7
-        versionName "1.2.1"
+        versionCode 8
+        versionName "1.2.2"
     }
 }
 
