@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Play Store Changelog</string>
-    <string name="xposed_description">Mostra sempre il changelog completo di un\'app al posto delle prime quattro linee.</string>
 
     <!-- General settings -->
     <string name="pref_general">Generale</string>

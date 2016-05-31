@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">플레이 스토어 새로운 기능</string>
-    <string name="xposed_description">맨 처음 넷째 줄 대신에 항상 앱의 새로운 기능을 완전히 표시합니다.</string>
 
     <!-- General settings -->
     <string name="pref_general">기본</string>

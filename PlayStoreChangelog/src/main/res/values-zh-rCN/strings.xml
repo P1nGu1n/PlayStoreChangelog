@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">谷歌Play商店更新日志</string>
-    <string name="xposed_description">使Play商店的应用能显示完整的更新日志而不仅是日志的前四行。</string>
 
     <!-- General settings -->
     <string name="pref_general">一般</string>
