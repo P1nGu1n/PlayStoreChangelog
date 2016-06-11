@@ -14,6 +14,10 @@
     <string name="pref_my_apps_default_pane_on">Show the My Apps pane when the Play Store gets opened</string>
     <string name="pref_my_apps_default_pane_off">Show the Store Home pane when the Play Store gets opened</string>
 
+    <string name="pref_my_apps_auto_refresh">Auto refresh Installed Apps list</string>
+    <string name="pref_my_apps_auto_refresh_on">Check for updates when the Play Store is re-opened</string>
+    <string name="pref_my_apps_auto_refresh_off">Don\'t check for updates when the Play Store is re-opened</string>
+
     <!-- Other settings -->
     <string name="pref_other">Other</string>
 

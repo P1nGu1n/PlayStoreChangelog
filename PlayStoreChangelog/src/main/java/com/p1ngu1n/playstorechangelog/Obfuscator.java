@@ -41,15 +41,32 @@ public class Obfuscator {
     // com.google.android.finsky.navigationmanager.NavigationManager > method goToMyDownloads(DfteToc, bool)
     public String navManagerGoToMyDownloads;
 
+    // com.google.android.finsky.activities.myapps.MyAppsTabbedFragment > class
+    public String myAppsTabbedFragment;
+    // com.google.android.finsky.activities.myapps.MyAppsInstalledTab > class
+    public String myAppsInstalledTab;
+    // com.google.android.finsky.activities.myapps.MyAppsTabbedAdapter > class
+    public String myAppsTabbedAdapter;
+    // com.google.android.finsky.activities.myapps.MyAppsTabbedAdapter > method instantiateItem(ViewGroup, int)
+    public String myAppsTabbedAdapterInstItem;
+    // com.google.android.finsky.activities.myapps.MyAppsTabbedAdapter > field mFragment (MyAppsTabbedFragment)
+    public String myAppsTabbedAdapterFragment;
+    // com.google.android.finsky.activities.myapps.MyAppsTab > method loadData()
+    public String myAppsTabLoadData;
+    // android.support.v4.app.Fragment > method onStart()
+    public String fragmentOnStart;
+
     public Obfuscator(int version) {
+        // init general names
         if (version >= V6_2_10) {
             detailsTextBlockBind = "a";
             mainActHandleIntent = "B";
             mainActNavManager = "o";
-            navManager = "b";
+            navManager = "com.google.android.finsky.navigationmanager.b";
             navManagerIsBackStackEmpty = "e";
             navManagerGoToAggregatedHome = "a";
             navManagerGoToMyDownloads = "a";
+
             if (version >= V6_3_13_B) {
                 mainActNavManager = "q";
             }
@@ -60,10 +77,45 @@ public class Obfuscator {
             detailsTextBlockBind = "bind";
             mainActHandleIntent = "handleIntent";
             mainActNavManager = "mNavigationManager";
-            navManager = "NavigationManager";
+            navManager = "com.google.android.finsky.navigationmanager.NavigationManager";
             navManagerIsBackStackEmpty = "isBackStackEmpty";
             navManagerGoToAggregatedHome = "goToAggregatedHome";
             navManagerGoToMyDownloads = "goToMyDownloads";
+        }
+
+        // init auto-refresh names
+        if (version >= V6_7_07_E) {
+            myAppsTabbedFragment = "com.google.android.finsky.activities.myapps.ag";
+            myAppsInstalledTab = "com.google.android.finsky.activities.myapps.p";
+            myAppsTabbedAdapter = "com.google.android.finsky.activities.myapps.ae";
+            myAppsTabbedAdapterInstItem = "a";
+            myAppsTabbedAdapterFragment = "l";
+            myAppsTabLoadData = "k"; // com.google.android.finsky.activities.myapps.ac
+            fragmentOnStart = "g_";
+        } else if (version >= V6_3_13_B) {
+            myAppsTabbedFragment = "com.google.android.finsky.activities.myapps.ae";
+            myAppsInstalledTab = "com.google.android.finsky.activities.myapps.n";
+            myAppsTabbedAdapter = "com.google.android.finsky.activities.myapps.ac";
+            myAppsTabbedAdapterInstItem = "a";
+            myAppsTabbedAdapterFragment = "k";
+            myAppsTabLoadData = "k"; // com.google.android.finsky.activities.myapps.aa
+            fragmentOnStart = "g_";
+        } else if (version >= V6_2_10) {
+            myAppsTabbedFragment = "com.google.android.finsky.activities.myapps.ac";
+            myAppsInstalledTab = "com.google.android.finsky.activities.myapps.l";
+            myAppsTabbedAdapter = "com.google.android.finsky.activities.myapps.aa";
+            myAppsTabbedAdapterInstItem = "a";
+            myAppsTabbedAdapterFragment = "j";
+            myAppsTabLoadData = "k"; // com.google.android.finsky.activities.myapps.y
+            fragmentOnStart = "g_";
+        } else {
+            myAppsTabbedFragment = "com.google.android.finsky.activities.myapps.MyAppsTabbedFragment";
+            myAppsInstalledTab = "com.google.android.finsky.activities.myapps.MyAppsInstalledTab";
+            myAppsTabbedAdapter = "com.google.android.finsky.activities.myapps.MyAppsTabbedAdapter";
+            myAppsTabbedAdapterInstItem = "instantiateItem";
+            myAppsTabbedAdapterFragment = "mFragment";
+            myAppsTabLoadData = "loadData";
+            fragmentOnStart = "onStart";
         }
     }
 }

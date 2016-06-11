@@ -15,6 +15,13 @@
             android:summaryOn="@string/pref_my_apps_default_pane_on"
             android:summaryOff="@string/pref_my_apps_default_pane_off"
             android:defaultValue="false" />
+
+        <CheckBoxPreference
+            android:key="pref_my_apps_auto_refresh"
+            android:title="@string/pref_my_apps_auto_refresh"
+            android:summaryOn="@string/pref_my_apps_auto_refresh_on"
+            android:summaryOff="@string/pref_my_apps_auto_refresh_off"
+            android:defaultValue="false" />
     </PreferenceCategory>
 
     <PreferenceCategory android:title="@string/pref_other">
