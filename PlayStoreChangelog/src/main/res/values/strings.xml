@@ -22,7 +22,7 @@
     <string name="pref_launcher_summary">Settings will only be accessible though Xposed Installer if disabled</string>
 
     <string name="pref_debug_title">Debugging</string>
-    <string name="pref_debug_summart">Show debug information in the Xposed Log</string>
+    <string name="pref_debug_summary">Show debug information in the Xposed Log</string>
 
     <!-- About section -->
     <string name="pref_about">About</string>

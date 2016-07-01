@@ -18,7 +18,7 @@
     <string name="pref_launcher_summary">내 런처를 통한 설정 접근하기</string>
 
     <string name="pref_debug_title">디버깅</string>
-    <string name="pref_debug_summart">Xposed 기록에 디버그 정보 표시하기</string>
+    <string name="pref_debug_summary">Xposed 기록에 디버그 정보 표시하기</string>
 
     <!-- About section -->
     <string name="pref_about">정보</string>

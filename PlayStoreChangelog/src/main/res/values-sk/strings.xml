@@ -18,7 +18,7 @@
     <string name="pref_launcher_summary">Prejsť do nastavení cez spúšťač</string>
 
     <string name="pref_debug_title">Ladenie</string>
-    <string name="pref_debug_summart">Ladiace informácie budú zobrazené v Xposed zázname</string>
+    <string name="pref_debug_summary">Ladiace informácie budú zobrazené v Xposed zázname</string>
 
     <!-- About section -->
     <string name="pref_about">O aplikácii</string>

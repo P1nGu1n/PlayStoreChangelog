@@ -18,7 +18,7 @@
     <string name="pref_launcher_summary">Accedi alle impostazioni dal mio launcher</string>
 
     <string name="pref_debug_title">Debugging</string>
-      <string name="pref_debug_summart">Informazioni di debug sono mostrate nel Log di Xposed</string>
+      <string name="pref_debug_summary">Informazioni di debug sono mostrate nel Log di Xposed</string>
 
     <!-- About section -->
     <string name="pref_about">Info</string>

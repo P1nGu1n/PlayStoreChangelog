@@ -18,7 +18,7 @@
     <string name="pref_launcher_summary">Πρόσβαση στην εφαρμογή από τον launcher</string>
 
     <string name="pref_debug_title">Αποσφαλμάτωση</string>
-    <string name="pref_debug_summart">Πληροφορίες για αποσφαλμάτωση θα εμφανίζονται στο Xposed Log</string>
+    <string name="pref_debug_summary">Πληροφορίες για αποσφαλμάτωση θα εμφανίζονται στο Xposed Log</string>
 
     <!-- About section -->
     <string name="pref_about">Σχετικά με</string>

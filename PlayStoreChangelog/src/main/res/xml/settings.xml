@@ -31,7 +31,7 @@
         <CheckBoxPreference
             android:key="pref_debug"
             android:title="@string/pref_debug_title"
-            android:summary="@string/pref_debug_summart"
+            android:summary="@string/pref_debug_summary"
             android:defaultValue="false" />
     </PreferenceCategory>
 

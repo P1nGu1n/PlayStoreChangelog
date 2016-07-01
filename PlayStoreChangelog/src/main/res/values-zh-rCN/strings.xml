@@ -18,7 +18,7 @@
     <string name="pref_launcher_summary">允许从桌面启动</string>
 
     <string name="pref_debug_title">调试</string>
-    <string name="pref_debug_summart">调试信息将会出现在Xposed日志中</string>
+    <string name="pref_debug_summary">调试信息将会出现在Xposed日志中</string>
 
     <!-- About section -->
     <string name="pref_about">关于</string>

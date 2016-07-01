@@ -18,7 +18,7 @@
     <string name="pref_launcher_summary">Accéder aux paramètres via le lanceur</string>
 
     <string name="pref_debug_title">Débogage</string>
-    <string name="pref_debug_summart">Activer la journalisation dans l\'onglet Log Xposed</string>
+    <string name="pref_debug_summary">Activer la journalisation dans l\'onglet Log Xposed</string>
 
     <!-- About section -->
     <string name="pref_about">À propos</string>
