@@ -5,24 +5,20 @@
     <!-- General settings -->
     <string name="pref_general">Γένικα</string>
 
-    <string name="pref_full_changelog">Εμφάνιση πλήρους αρχείου αλλαγών</string>
-    <string name="pref_full_changelog_on">Εμφάνιση πλήρους αρχείου αλλαγών των εφαρμογών</string>
-    <string name="pref_full_changelog_off">Εμφάνιση των πρώτων τεσσάρων γραμμών απο το αρχείο αλλαγών των εφαρμογών</string>
+    <string name="pref_full_changelog_title">Εμφάνιση πλήρους αρχείου αλλαγών</string>
+    <string name="pref_full_changelog_summary">Εμφάνιση πλήρους αρχείου αλλαγών των εφαρμογών</string>
 
-    <string name="pref_my_apps_default_pane">Αλλαγή της προεπιλεγμένης καρτέλας σε \'Εφαρμογές μου\'</string>
-    <string name="pref_my_apps_default_pane_on">Εμφάνιση της καρτέλας \'Εφαρμογές μου\' όταν ανοίγει το Play Store</string>
-    <string name="pref_my_apps_default_pane_off"> Εμφάνιση της αρχικής καρτέλας όταν ανοίγει το Play Store</string>
+    <string name="pref_my_apps_default_pane_title">Αλλαγή της προεπιλεγμένης καρτέλας σε \'Εφαρμογές μου\'</string>
+    <string name="pref_my_apps_default_pane_summary">Εμφάνιση της καρτέλας \'Εφαρμογές μου\' όταν ανοίγει το Play Store</string>
 
     <!-- Other settings -->
     <string name="pref_other">Άλλο</string>
 
     <string name="pref_launcher_title">Εμφάνιση εικονιδίου στον launcher</string>
-    <string name="pref_launcher_on">Πρόσβαση στην εφαρμογή από τον launcher</string>
-    <string name="pref_launcher_off"> Πρόσβαση στην εφαρμογή από το Xposed Installer</string>
+    <string name="pref_launcher_summary">Πρόσβαση στην εφαρμογή από τον launcher</string>
 
     <string name="pref_debug_title">Αποσφαλμάτωση</string>
-    <string name="pref_debug_on">Πληροφορίες για αποσφαλμάτωση θα εμφανίζονται στο Xposed Log</string>
-    <string name="pref_debug_off">Πληροφορίες για αποσφαλμάτωση δεν θα εμφανίζονται στο Xposed Log</string>
+    <string name="pref_debug_summart">Πληροφορίες για αποσφαλμάτωση θα εμφανίζονται στο Xposed Log</string>
 
     <!-- About section -->
     <string name="pref_about">Σχετικά με</string>

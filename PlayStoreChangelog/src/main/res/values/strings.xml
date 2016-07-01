@@ -6,28 +6,23 @@
     <!-- General settings -->
     <string name="pref_general">General</string>
 
-    <string name="pref_full_changelog">Display full changelog</string>
-    <string name="pref_full_changelog_on">Display an app\'s full changelog</string>
-    <string name="pref_full_changelog_off">Display the first four lines of an app\'s changelog</string>
+    <string name="pref_full_changelog_title">Display full changelog</string>
+    <string name="pref_full_changelog_summary">Display an app\'s full changelog</string>
 
-    <string name="pref_my_apps_default_pane">Change default pane to My Apps</string>
-    <string name="pref_my_apps_default_pane_on">Show the My Apps pane when the Play Store gets opened</string>
-    <string name="pref_my_apps_default_pane_off">Show the Store Home pane when the Play Store gets opened</string>
+    <string name="pref_my_apps_default_pane_title">Change default pane to My Apps</string>
+    <string name="pref_my_apps_default_pane_summary">Show the My Apps pane when the Play Store gets opened</string>
 
-    <string name="pref_my_apps_auto_refresh">Auto refresh Installed Apps list</string>
-    <string name="pref_my_apps_auto_refresh_on">Check for updates when the Play Store is re-opened</string>
-    <string name="pref_my_apps_auto_refresh_off">Don\'t check for updates when the Play Store is re-opened</string>
+    <string name="pref_my_apps_auto_refresh_title">Auto refresh Installed Apps list [BETA]</string>
+    <string name="pref_my_apps_auto_refresh_summary">Check for updates when the Play Store is re-opened</string>
 
     <!-- Other settings -->
     <string name="pref_other">Other</string>
 
     <string name="pref_launcher_title">Show launcher icon</string>
-    <string name="pref_launcher_on">Access settings through my launcher</string>
-    <string name="pref_launcher_off">Access settings through Xposed Installer</string>
+    <string name="pref_launcher_summary">Settings will only be accessible though Xposed Installer if disabled</string>
 
     <string name="pref_debug_title">Debugging</string>
-    <string name="pref_debug_on">Debug information is shown in the Xposed Log</string>
-    <string name="pref_debug_off">Debug information is not shown in the Xposed Log</string>
+    <string name="pref_debug_summart">Show debug information in the Xposed Log</string>
 
     <!-- About section -->
     <string name="pref_about">About</string>

@@ -4,21 +4,17 @@
     <string name="pref_about">О приложении</string>
     <string name="pref_about_summary">Play Store Changelog выпущен под лицензией GPLv3.</string>
     <string name="pref_about_title">Play Store Changelog v%1$s</string>
-    <string name="pref_debug_off">Отладочная информация не отображается в Xposed Log</string>
-    <string name="pref_debug_on">Отладочная информация отображается в Xposed Log</string>
+    <string name="pref_debug_summart">Отладочная информация отображается в Xposed Log</string>
     <string name="pref_debug_title">Отладка</string>
     <string name="pref_donate_summary">Поддержите меня, скинтесь мне на пиво, используя PayPal. Я очень ценю пожертвования.</string>
     <string name="pref_donate_title">Пожертвовать</string>
-    <string name="pref_full_changelog">Показать полный список изменений</string>
-    <string name="pref_full_changelog_off">Показать первые четыре строки списка изменений в приложение</string>
-    <string name="pref_full_changelog_on">Показать полный список изменений в приложении</string>
+    <string name="pref_full_changelog_title">Показать полный список изменений</string>
+    <string name="pref_full_changelog_summary">Показать полный список изменений в приложении</string>
     <string name="pref_general">Главное</string>
-    <string name="pref_launcher_off">Запуск через Xposed</string>
-    <string name="pref_launcher_on">Запуск через лаунчер</string>
+    <string name="pref_launcher_summary">Запуск через лаунчер</string>
     <string name="pref_launcher_title">Показать значок запуска</string>
-    <string name="pref_my_apps_default_pane">Изменить Домашнюю страницу</string>
-    <string name="pref_my_apps_default_pane_off">"Открывать Домашнюю страницу при открытии Play Маркет "</string>
-    <string name="pref_my_apps_default_pane_on">Показать панель Мои приложения, при открытии Play Маркет</string>
+    <string name="pref_my_apps_default_pane_title">Изменить Домашнюю страницу</string>
+    <string name="pref_my_apps_default_pane_summary">Показать панель Мои приложения, при открытии Play Маркет</string>
     <string name="pref_other">Остальное</string>
     <string name="pref_support_summary">Перейдите на XDA, пожалуйста, с начала прочитайте шапку, если вы столкнулись с проблемами.</string>    <string name="pref_support_title">Поддержка</string>
 </resources>

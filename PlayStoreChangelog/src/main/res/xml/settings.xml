@@ -4,23 +4,20 @@
     <PreferenceCategory android:title="@string/pref_general">
         <CheckBoxPreference
             android:key="pref_full_changelog"
-            android:title="@string/pref_full_changelog"
-            android:summaryOn="@string/pref_full_changelog_on"
-            android:summaryOff="@string/pref_full_changelog_off"
+            android:title="@string/pref_full_changelog_title"
+            android:summary="@string/pref_full_changelog_summary"
             android:defaultValue="true" />
 
         <CheckBoxPreference
             android:key="pref_my_apps_default_pane"
-            android:title="@string/pref_my_apps_default_pane"
-            android:summaryOn="@string/pref_my_apps_default_pane_on"
-            android:summaryOff="@string/pref_my_apps_default_pane_off"
+            android:title="@string/pref_my_apps_default_pane_title"
+            android:summary="@string/pref_my_apps_default_pane_summary"
             android:defaultValue="false" />
 
         <CheckBoxPreference
             android:key="pref_my_apps_auto_refresh"
-            android:title="@string/pref_my_apps_auto_refresh"
-            android:summaryOn="@string/pref_my_apps_auto_refresh_on"
-            android:summaryOff="@string/pref_my_apps_auto_refresh_off"
+            android:title="@string/pref_my_apps_auto_refresh_title"
+            android:summary="@string/pref_my_apps_auto_refresh_summary"
             android:defaultValue="false" />
     </PreferenceCategory>
 
@@ -28,15 +25,13 @@
         <CheckBoxPreference
             android:key="pref_launcher"
             android:title="@string/pref_launcher_title"
-            android:summaryOn="@string/pref_launcher_on"
-            android:summaryOff="@string/pref_launcher_off"
+            android:summary="@string/pref_launcher_summary"
             android:defaultValue="true" />
 
         <CheckBoxPreference
             android:key="pref_debug"
             android:title="@string/pref_debug_title"
-            android:summaryOn="@string/pref_debug_on"
-            android:summaryOff="@string/pref_debug_off"
+            android:summary="@string/pref_debug_summart"
             android:defaultValue="false" />
     </PreferenceCategory>
 
