@@ -129,7 +129,7 @@ public class PlayStoreChangelog implements IXposedHookLoadPackage {
          * we'll show the My Apps fragment.
          */
         Class<?> dfeTocClass = XposedHelpers.findClass("com.google.android.finsky.api.model.DfeToc", loadPackageParam.classLoader);
-        XposedHelpers.findAndHookMethod(navigationManagerClass, obfsc.navManagerGoToAggregatedHome, dfeTocClass, new XC_MethodReplacement() {
+        XC_MethodHook navManagerGoToAggregatedHomeHook = new XC_MethodReplacement() {
             @Override
             protected Object replaceHookedMethod(MethodHookParam param) throws Throwable {
                 Boolean calledIsBackStackEmpty = (Boolean) XposedHelpers.getAdditionalInstanceField(param.thisObject, "calledIsBackStackEmpty");
@@ -145,7 +145,16 @@ public class PlayStoreChangelog implements IXposedHookLoadPackage {
                 }
                 return null;
             }
-        });
+        };
+
+        Object[] navManagerGoToAggregatedHomeParams;
+        if (playStoreVersion >= Obfuscator.V6_8_20_F) {
+            Class<?> analyticsClass = XposedHelpers.findClass(obfsc.analytics, loadPackageParam.classLoader);
+            navManagerGoToAggregatedHomeParams = new Object[] {dfeTocClass, analyticsClass, navManagerGoToAggregatedHomeHook};
+        } else {
+            navManagerGoToAggregatedHomeParams = new Object[] {dfeTocClass, navManagerGoToAggregatedHomeHook};
+        }
+        XposedHelpers.findAndHookMethod(navigationManagerClass, obfsc.navManagerGoToAggregatedHome, navManagerGoToAggregatedHomeParams);
 
         XposedHelpers.findAndHookMethod(obfsc.myAppsTabbedFragment, loadPackageParam.classLoader, obfsc.fragmentOnStart, new XC_MethodHook() {
             @Override
