@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<string name="app_name">Play Store Changelog</string>
+
+	<!-- General settings -->
+	<string name="pref_general">Загальні</string>
+
+	<string name="pref_full_changelog">Показати повний список змін</string>
+	<string name="pref_full_changelog_summary">Показати повний список змін в додатку</string>
+
+	<string name="pref_my_apps_default_pane">Змінити панель Мої додатки за замовчуванням</string>
+	<string name="pref_my_apps_default_pane_summary">Показати панель Мої додатки, при відкритті Play Маркет</string>
+
+	<string name="pref_my_apps_auto_refresh">Автоматичне оновлення списку встановлених додатків</string>
+	<string name="pref_my_apps_auto_refresh_summary">Перевірити наявність оновлень, коли Play Маркет буде повторно відкритий</string>
+
+	<!-- Other settings -->
+	<string name="pref_other">Інші</string>
+
+	<string name="pref_launcher_title">Показати значок у лаунчері</string>
+	<string name="pref_launcher_summary">Дозволити налаштування через мій лаунчер</string>
+
+	<string name="pref_debug_title">Налагодження</string>
+	<string name="pref_debug_summary">Налагоджувальна інформація відображається в журналі Xposed</string>
+
+	<!-- About section -->
+	<string name="pref_about">Про додаток</string>
+
+	<string name="pref_about_title">Play Store Changelog v%1$s</string>
+	<string name="pref_about_summary">Play Store Changelog випущений під ліцензією GPLv3.</string>
+
+	<string name="pref_donate_title">Пожертвувати</string>
+	<string name="pref_donate_summary">Підтримайте мене, скиньтеся мені на пиво, використовуючи PayPal. Я дуже ціную пожертвування.</string>
+
+	<string name="pref_support_title">Підтримка</string>
+	<string name="pref_support_summary">Перейдіть на XDA, будь ласка, з початку прочитайте шапку, якщо ви зіткнулися з проблемами.</string>
+</resources>
