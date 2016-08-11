@@ -1,24 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources>
+<resources
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:ignore="MissingTranslation">
+
     <string name="app_name">Play Store Changelog</string>
 
     <!-- General settings -->
     <string name="pref_general">Všeobecné</string>
 
     <string name="pref_full_changelog_title">Zobraziť celý zoznam zmien</string>
-    <string name="pref_full_changelog_summary">Zobraziť celý zoznam zmien</string>
+    <string name="pref_full_changelog_summary">Zobrazí celý zoznam zmien</string>
 
     <string name="pref_my_apps_default_pane_title">Zmeniť predvolenú stránku na Moje aplikácie</string>
-    <string name="pref_my_apps_default_pane_summary">Zobraziť stránku Moje aplikácie po otvorení Obchodu Play</string>
+    <string name="pref_my_apps_default_pane_summary">Zobrazí stránku Moje aplikácie po otvorení Obchodu Play</string>
+
+    <string name="pref_my_apps_auto_refresh_title">Automaticky obnoviť zoznam nainštalovaných aplikácií</string>
+    <string name="pref_my_apps_auto_refresh_summary">Skontroluje aktualizácie po znovuotvorení Obchodu Play</string>
 
     <!-- Other settings -->
     <string name="pref_other">Ostatné</string>
 
     <string name="pref_launcher_title">Zobraziť ikonu v spúšťači</string>
-    <string name="pref_launcher_summary">Prejsť do nastavení cez spúšťač</string>
+    <string name="pref_launcher_summary">Ak je zakázané, prístup k nastaveniam bude možný len cez Xposed Installer</string>
 
     <string name="pref_debug_title">Ladenie</string>
-    <string name="pref_debug_summary">Ladiace informácie budú zobrazené v Xposed zázname</string>
+    <string name="pref_debug_summary">Zobrazí viac informácií v Xposed zázname</string>
 
     <!-- About section -->
     <string name="pref_about">O aplikácii</string>
