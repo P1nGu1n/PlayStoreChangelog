@@ -5,13 +5,13 @@
 	<!-- General settings -->
 	<string name="pref_general">Загальні</string>
 
-	<string name="pref_full_changelog">Показати повний список змін</string>
+	<string name="pref_full_changelog_title">Показати повний список змін</string>
 	<string name="pref_full_changelog_summary">Показати повний список змін в додатку</string>
 
-	<string name="pref_my_apps_default_pane">Змінити панель Мої додатки за замовчуванням</string>
+	<string name="pref_my_apps_default_pane_title">Змінити панель Мої додатки за замовчуванням</string>
 	<string name="pref_my_apps_default_pane_summary">Показати панель Мої додатки, при відкритті Play Маркет</string>
 
-	<string name="pref_my_apps_auto_refresh">Автоматичне оновлення списку встановлених додатків</string>
+	<string name="pref_my_apps_auto_refresh_title">Автоматичне оновлення списку встановлених додатків</string>
 	<string name="pref_my_apps_auto_refresh_summary">Перевірити наявність оновлень, коли Play Маркет буде повторно відкритий</string>
 
 	<!-- Other settings -->
