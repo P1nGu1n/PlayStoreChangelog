@@ -26,6 +26,7 @@ public class Obfuscator {
     public static final int V6_3_13_B = 80631300;
     public static final int V6_7_07_E = 80670700;
     public static final int V6_8_20_F = 80682000;
+    public static final int V6_9_15_G = 80691500;
 
     // com.google.android.finsky.layout.DetailsTextBlock > method bind(CharSequence, CharSequence, int)
     public String detailsTextBlockBind;
@@ -80,6 +81,11 @@ public class Obfuscator {
                 mainActHandleIntent = "M";
                 analytics = "com.google.android.finsky.b.n";
             }
+            if (version >= V6_9_15_G) {
+                mainActNavManager = "r";
+                navManagerIsBackStackEmpty = "c";
+                analytics = "com.google.android.finsky.b.q";
+            }
         } else {
             detailsTextBlockBind = "bind";
             mainActHandleIntent = "handleIntent";
@@ -101,6 +107,10 @@ public class Obfuscator {
             fragmentOnStart = "g_";
             if (version >= V6_8_20_F) {
                 myAppsTabLoadData = "j";
+            }
+            if (version >= V6_9_15_G) {
+                myAppsTabbedFragment = "com.google.android.finsky.activities.myapps.ah";
+                myAppsTabbedAdapter = "com.google.android.finsky.activities.myapps.af";
             }
         } else if (version >= V6_3_13_B) {
             myAppsTabbedFragment = "com.google.android.finsky.activities.myapps.ae";
