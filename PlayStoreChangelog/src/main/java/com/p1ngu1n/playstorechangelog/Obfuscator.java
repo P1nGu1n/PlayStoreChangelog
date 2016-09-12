@@ -27,6 +27,7 @@ public class Obfuscator {
     public static final int V6_7_07_E = 80670700;
     public static final int V6_8_20_F = 80682000;
     public static final int V6_9_15_G = 80691500;
+    public static final int V7_0_12_H = 80701200;
 
     // com.google.android.finsky.layout.DetailsTextBlock > method bind(CharSequence, CharSequence, int)
     public String detailsTextBlockBind;
@@ -86,6 +87,12 @@ public class Obfuscator {
                 navManagerIsBackStackEmpty = "c";
                 analytics = "com.google.android.finsky.b.q";
             }
+            if (version >= V7_0_12_H) {
+                navManager = "com.google.android.finsky.navigationmanager.c";
+                mainActNavManager = "u";
+                mainActHandleIntent = "J";
+                analytics = "com.google.android.finsky.b.s";
+            }
         } else {
             detailsTextBlockBind = "bind";
             mainActHandleIntent = "handleIntent";
@@ -111,6 +118,13 @@ public class Obfuscator {
             if (version >= V6_9_15_G) {
                 myAppsTabbedFragment = "com.google.android.finsky.activities.myapps.ah";
                 myAppsTabbedAdapter = "com.google.android.finsky.activities.myapps.af";
+            }
+            if (version >= V7_0_12_H) {
+                myAppsTabbedFragment = "com.google.android.finsky.activities.myapps.ao";
+                myAppsInstalledTab = "com.google.android.finsky.activities.myapps.o";
+                myAppsTabbedAdapter = "com.google.android.finsky.activities.myapps.ak";
+                myAppsTabbedAdapterFragment = "m";
+                //myAppsTabLoadData = "q_"; TODO
             }
         } else if (version >= V6_3_13_B) {
             myAppsTabbedFragment = "com.google.android.finsky.activities.myapps.ae";
