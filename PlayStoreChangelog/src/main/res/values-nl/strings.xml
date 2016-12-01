@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Play Store Changelog</string>
+    <string name="xposed_description" translatable="false">Always display an app\'s full changelog instead of the first four lines.</string>
+
+    <!-- General settings -->
+    <string name="pref_general">Algemeen</string>
+
+    <string name="pref_full_changelog_title">Volledige changelog zichtbaar</string>
+    <string name="pref_full_changelog_summary">Laat de volledige changelog van een app zien</string>
+
+    <string name="pref_my_apps_default_pane_title">Verander het standaardscherm naar Mijn Apps</string>
+    <string name="pref_my_apps_default_pane_summary">Laat het Mijn Apps scherm zien bij het openen van de Play Store</string>
+
+    <string name="pref_my_apps_auto_refresh_title">Auto vernieuw geinstalleerde apps-lijst [BETA]</string>
+    <string name="pref_my_apps_auto_refresh_summary">Controleer op updates wanneer de Play Store is heropend</string>
+
+    <!-- Other settings -->
+    <string name="pref_other">Overig</string>
+
+    <string name="pref_launcher_title">Laat launcher icoon zien</string>
+    <string name="pref_launcher_summary">Indien uitgezet zijn instellingen alleen via Xposed Installer te wijzigen</string>
+
+    <string name="pref_debug_title">Debugging</string>
+    <string name="pref_debug_summary">Laat debug informatie in de Xposed Log zien</string>
+
+    <!-- About section -->
+    <string name="pref_about">Over</string>
+
+    <string name="pref_about_title">Play Store Changelog v%1$s</string>
+    <string name="pref_about_summary">Play Store Changelog is uitgegeven onder de GPLv3 licentie.</string>
+
+    <string name="pref_donate_title">Doneer</string>
+    <string name="pref_donate_summary">Ondersteun me, trakteer me op een biertje via PayPal. Donaties worden zeer gewaardeerd.</string>
+
+    <string name="pref_support_title">Ondersteuning</string>
+    <string name="pref_support_summary">Ga naar de XDA-thread, lees de OP eerst als zich problemen voordoen.</string>
+</resources>
