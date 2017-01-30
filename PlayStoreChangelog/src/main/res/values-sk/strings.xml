@@ -17,6 +17,10 @@
     <string name="pref_my_apps_auto_refresh_title">Automaticky obnoviť zoznam nainštalovaných aplikácií</string>
     <string name="pref_my_apps_auto_refresh_summary">Skontroluje aktualizácie po znovuotvorení Obchodu Play</string>
 
+    <string name="pref_my_apps_auto_refresh">Automaticky obnoviť zoznam nainštalovaných aplikácií</string>
+    <string name="pref_my_apps_auto_refresh_on">Skontrolovať aktualizácie po znovuotvorení Obchodu Play</string>
+    <string name="pref_my_apps_auto_refresh_off">Nekontrolovať aktualizácie po znovuotvorení Obchodu Play</string>
+
     <!-- Other settings -->
     <string name="pref_other">Ostatné</string>
 
