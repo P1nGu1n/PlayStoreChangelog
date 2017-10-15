@@ -20,11 +20,9 @@ package com.p1ngu1n.playstorechangelog;
 
 import android.content.Context;
 import android.content.pm.PackageInfo;
-import android.view.ViewGroup;
 
 import de.robv.android.xposed.IXposedHookLoadPackage;
 import de.robv.android.xposed.XC_MethodHook;
-import de.robv.android.xposed.XC_MethodReplacement;
 import de.robv.android.xposed.XSharedPreferences;
 import de.robv.android.xposed.XposedBridge;
 import de.robv.android.xposed.XposedHelpers;
@@ -35,10 +33,13 @@ import de.robv.android.xposed.callbacks.XC_LoadPackage;
  */
 public class PlayStoreChangelog implements IXposedHookLoadPackage {
     private static final String LOG_TAG = "PSC: ";
+    private static final int V6_2_10 = 80621000;
+    private static final int V8_1_25_S = 80812500;
+
     // Preferences and their default values
     private XSharedPreferences prefs;
-    public boolean showFullChangelog = true;
-    public boolean debugging = false;
+    private boolean showFullChangelog = true;
+    private boolean debugging = false;
 
     @Override
     public void handleLoadPackage(final XC_LoadPackage.LoadPackageParam loadPackageParam) throws Throwable {
@@ -58,15 +59,18 @@ public class PlayStoreChangelog implements IXposedHookLoadPackage {
             XposedBridge.log(LOG_TAG + "Module version: " + BuildConfig.VERSION_NAME + " (" + BuildConfig.VERSION_CODE + ")");
         }
 
-        final Obfuscator obfsc = new Obfuscator(playStoreVersion);
+        String detailsTextBlock = playStoreVersion < V8_1_25_S
+                ? "com.google.android.finsky.layout.DetailsTextBlock"
+                : "com.google.android.finsky.detailscomponents.DetailsTextBlock";
+        String detailsTextBlockBind = playStoreVersion < V6_2_10 ? "bind" : "a";
 
         /*
          * DetailsTextBlock is the block containing the "What's New" heading and the changelog.
          * The maximum number of lines of the changelog gets set to the number passed as a parameter to the 'bind' method.
          * This mod changes this parameter to the maximum integer value, so the changelog will always be fully shown.
          */
-        Class<?> detailsTextBlockClass = XposedHelpers.findClass("com.google.android.finsky.layout.DetailsTextBlock", loadPackageParam.classLoader);
-        XposedHelpers.findAndHookMethod(detailsTextBlockClass, obfsc.detailsTextBlockBind, CharSequence.class, CharSequence.class, int.class, new XC_MethodHook() {
+        Class<?> detailsTextBlockClass = XposedHelpers.findClass(detailsTextBlock, loadPackageParam.classLoader);
+        XposedHelpers.findAndHookMethod(detailsTextBlockClass, detailsTextBlockBind, CharSequence.class, CharSequence.class, int.class, new XC_MethodHook() {
             @Override
             protected void beforeHookedMethod(MethodHookParam param) throws Throwable {
                 refreshPreferences();
