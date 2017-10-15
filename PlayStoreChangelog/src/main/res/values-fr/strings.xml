@@ -8,15 +8,6 @@
     <string name="pref_full_changelog_title">Changelog complet</string>
     <string name="pref_full_changelog_summary">Voir le changelog complet de l\'appli</string>
 
-    <string name="pref_my_apps_default_pane_title">Onglet Mes applications par défaut</string>
-    <string name="pref_my_apps_default_pane_summary">Afficher l\'onglet Mes applications à l\'ouverture du Play Store</string>
-
-    <!-- Other settings -->
-    <string name="pref_other">Autre</string>
-
-    <string name="pref_launcher_title">Afficher l\'icône</string>
-    <string name="pref_launcher_summary">Accéder aux paramètres via le lanceur</string>
-
     <string name="pref_debug_title">Débogage</string>
     <string name="pref_debug_summary">Activer la journalisation dans l\'onglet Log Xposed</string>
 

@@ -9,26 +9,6 @@
             android:defaultValue="true" />
 
         <CheckBoxPreference
-            android:key="pref_my_apps_default_pane"
-            android:title="@string/pref_my_apps_default_pane_title"
-            android:summary="@string/pref_my_apps_default_pane_summary"
-            android:defaultValue="false" />
-
-        <CheckBoxPreference
-            android:key="pref_my_apps_auto_refresh"
-            android:title="@string/pref_my_apps_auto_refresh_title"
-            android:summary="@string/pref_my_apps_auto_refresh_summary"
-            android:defaultValue="false" />
-    </PreferenceCategory>
-
-    <PreferenceCategory android:title="@string/pref_other">
-        <CheckBoxPreference
-            android:key="pref_launcher"
-            android:title="@string/pref_launcher_title"
-            android:summary="@string/pref_launcher_summary"
-            android:defaultValue="true" />
-
-        <CheckBoxPreference
             android:key="pref_debug"
             android:title="@string/pref_debug_title"
             android:summary="@string/pref_debug_summary"

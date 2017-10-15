@@ -8,15 +8,6 @@
     <string name="pref_full_changelog_title">显示全部更新日志</string>
     <string name="pref_full_changelog_summary">显示应用完整更新日志</string>
 
-    <string name="pref_my_apps_default_pane_title">更换Play商店默认启动界面</string>
-    <string name="pref_my_apps_default_pane_summary">启动Play商店时显示我的应用</string>
-
-    <!-- Other settings -->
-    <string name="pref_other">其他</string>
-
-    <string name="pref_launcher_title">显示桌面图标</string>
-    <string name="pref_launcher_summary">允许从桌面启动</string>
-
     <string name="pref_debug_title">调试</string>
     <string name="pref_debug_summary">调试信息将会出现在Xposed日志中</string>
 

@@ -8,17 +8,8 @@
     <string name="pref_full_changelog_title">Mostra changelog completo</string>
     <string name="pref_full_changelog_summary">Mostra il changelog completo di un\'app</string>
 
-    <string name="pref_my_apps_default_pane_title">Cambia scheda predefinita in Le mie App</string>
-    <string name="pref_my_apps_default_pane_summary">Mostra la scheda Le mie App quando il Play Store viene aperto</string>
-
-    <!-- Other settings -->
-    <string name="pref_other">Altro</string>
-
-    <string name="pref_launcher_title">Mostra icona nel launcher</string>
-    <string name="pref_launcher_summary">Accedi alle impostazioni dal mio launcher</string>
-
     <string name="pref_debug_title">Debugging</string>
-      <string name="pref_debug_summary">Informazioni di debug sono mostrate nel Log di Xposed</string>
+    <string name="pref_debug_summary">Informazioni di debug sono mostrate nel Log di Xposed</string>
 
     <!-- About section -->
     <string name="pref_about">Info</string>

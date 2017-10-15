@@ -8,15 +8,6 @@
     <string name="pref_full_changelog_title">Εμφάνιση πλήρους αρχείου αλλαγών</string>
     <string name="pref_full_changelog_summary">Εμφάνιση πλήρους αρχείου αλλαγών των εφαρμογών</string>
 
-    <string name="pref_my_apps_default_pane_title">Αλλαγή της προεπιλεγμένης καρτέλας σε \'Εφαρμογές μου\'</string>
-    <string name="pref_my_apps_default_pane_summary">Εμφάνιση της καρτέλας \'Εφαρμογές μου\' όταν ανοίγει το Play Store</string>
-
-    <!-- Other settings -->
-    <string name="pref_other">Άλλο</string>
-
-    <string name="pref_launcher_title">Εμφάνιση εικονιδίου στον launcher</string>
-    <string name="pref_launcher_summary">Πρόσβαση στην εφαρμογή από τον launcher</string>
-
     <string name="pref_debug_title">Αποσφαλμάτωση</string>
     <string name="pref_debug_summary">Πληροφορίες για αποσφαλμάτωση θα εμφανίζονται στο Xposed Log</string>
 

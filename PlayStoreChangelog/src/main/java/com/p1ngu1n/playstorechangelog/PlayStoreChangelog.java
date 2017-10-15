@@ -38,8 +38,6 @@ public class PlayStoreChangelog implements IXposedHookLoadPackage {
     // Preferences and their default values
     private XSharedPreferences prefs;
     public boolean showFullChangelog = true;
-    public boolean myAppsDefaultPane = false;
-    public boolean autoRefreshInstalled = false;
     public boolean debugging = false;
 
     @Override
@@ -78,113 +76,6 @@ public class PlayStoreChangelog implements IXposedHookLoadPackage {
                 }
             }
         });
-
-        /*
-         * MainActivity.handleIntent() does exactly what the name says, it handles intents.
-         * It checks what to do with the intent, for example open an app's details page.
-         *
-         * The last check is to load the default pane, it checks if there are any backstack
-         * entries. If there are none, it'll show the default pane, but we intercept this
-         * and show the My Apps page.
-         *
-         * We do this by creating temporary fields which we remove afterwards so the other
-         * hooked methods can detect whether they were called by this method.
-         */
-        Class<?> mainActivityClass = XposedHelpers.findClass("com.google.android.finsky.activities.MainActivity", loadPackageParam.classLoader);
-        XposedHelpers.findAndHookMethod(mainActivityClass, obfsc.mainActHandleIntent, new XC_MethodHook() {
-            @Override
-            protected void beforeHookedMethod(MethodHookParam param) throws Throwable {
-                refreshPreferences();
-                if (myAppsDefaultPane) {
-                    Object mNavigationManager = XposedHelpers.getObjectField(param.thisObject, obfsc.mainActNavManager);
-                    XposedHelpers.setAdditionalInstanceField(mNavigationManager, "handlingIntent", true);
-                }
-            }
-
-            @Override
-            protected void afterHookedMethod(MethodHookParam param) throws Throwable {
-                Object mNavigationManager = XposedHelpers.getObjectField(param.thisObject, obfsc.mainActNavManager);
-                XposedHelpers.removeAdditionalInstanceField(mNavigationManager, "handlingIntent");
-                XposedHelpers.removeAdditionalInstanceField(mNavigationManager, "calledIsBackStackEmpty");
-            }
-        });
-
-        /*
-         * After we checked whether the method was called from handleIntent() and the result of this method
-         * was positive, we create a temporary field to store this so goToAggregatedHome() can detect this.
-         */
-        Class<?> navigationManagerClass = XposedHelpers.findClass(obfsc.navManager, loadPackageParam.classLoader);
-        XposedHelpers.findAndHookMethod(navigationManagerClass, obfsc.navManagerIsBackStackEmpty, new XC_MethodHook() {
-            @Override
-            protected void afterHookedMethod(MethodHookParam param) throws Throwable {
-                Boolean handlingIntent = (Boolean) XposedHelpers.getAdditionalInstanceField(param.thisObject, "handlingIntent");
-                if (handlingIntent != null && handlingIntent && (Boolean) param.getResult()) {
-                    XposedHelpers.setAdditionalInstanceField(param.thisObject, "calledIsBackStackEmpty", true);
-                }
-            }
-        });
-
-        /*
-         * After we checked whether the method was called from handleIntent() and after isBackStackEmpty(),
-         * we'll show the My Apps fragment.
-         */
-        Class<?> dfeTocClass = XposedHelpers.findClass("com.google.android.finsky.api.model.DfeToc", loadPackageParam.classLoader);
-        XC_MethodHook navManagerGoToAggregatedHomeHook = new XC_MethodReplacement() {
-            @Override
-            protected Object replaceHookedMethod(MethodHookParam param) throws Throwable {
-                Boolean calledIsBackStackEmpty = (Boolean) XposedHelpers.getAdditionalInstanceField(param.thisObject, "calledIsBackStackEmpty");
-                if (calledIsBackStackEmpty != null && calledIsBackStackEmpty) {
-                    // v5.3.5 and up has an extra parameter, indicating whether all apps should be updated
-                    if (playStoreVersion >= 80330500) {
-                        XposedHelpers.callMethod(param.thisObject, obfsc.navManagerGoToMyDownloads, param.args[0], false);
-                    } else {
-                        XposedHelpers.callMethod(param.thisObject, obfsc.navManagerGoToMyDownloads, param.args[0]);
-                    }
-                } else {
-                    XposedBridge.invokeOriginalMethod(param.method, param.thisObject, param.args);
-                }
-                return null;
-            }
-        };
-
-        Object[] navManagerGoToAggregatedHomeParams;
-        if (playStoreVersion >= Obfuscator.V6_8_20_F) {
-            Class<?> analyticsClass = XposedHelpers.findClass(obfsc.analytics, loadPackageParam.classLoader);
-            navManagerGoToAggregatedHomeParams = new Object[] {dfeTocClass, analyticsClass, navManagerGoToAggregatedHomeHook};
-        } else {
-            navManagerGoToAggregatedHomeParams = new Object[] {dfeTocClass, navManagerGoToAggregatedHomeHook};
-        }
-        XposedHelpers.findAndHookMethod(navigationManagerClass, obfsc.navManagerGoToAggregatedHome, navManagerGoToAggregatedHomeParams);
-
-        XposedHelpers.findAndHookMethod(obfsc.myAppsTabbedFragment, loadPackageParam.classLoader, obfsc.fragmentOnStart, new XC_MethodHook() {
-            @Override
-            protected void afterHookedMethod(MethodHookParam param) throws Throwable {
-                Object previouslyCalled = XposedHelpers.getAdditionalInstanceField(param.thisObject, "previously_called");
-                if (previouslyCalled == null) {
-                    XposedHelpers.setAdditionalInstanceField(param.thisObject, "previously_called", true);
-                    return;
-                }
-
-                if (autoRefreshInstalled) {
-                    Object myAppsInstalledTab = XposedHelpers.getAdditionalInstanceField(param.thisObject, "my_apps_installed_tab");
-                    if (myAppsInstalledTab != null) {
-                        XposedHelpers.callMethod(myAppsInstalledTab, obfsc.myAppsTabLoadData);
-                    }
-                }
-            }
-        });
-
-        final Class<?> myAppsInstalledTabClass = XposedHelpers.findClass(obfsc.myAppsInstalledTab, loadPackageParam.classLoader);
-        XposedHelpers.findAndHookMethod(obfsc.myAppsTabbedAdapter, loadPackageParam.classLoader, obfsc.myAppsTabbedAdapterInstItem, ViewGroup.class, int.class, new XC_MethodHook() {
-            @Override
-            protected void afterHookedMethod(MethodHookParam param) throws Throwable {
-                Object result = param.getResult();
-                if (result.getClass() == myAppsInstalledTabClass) {
-                    Object fragment = XposedHelpers.getObjectField(param.thisObject, obfsc.myAppsTabbedAdapterFragment);
-                    XposedHelpers.setAdditionalInstanceField(fragment, "my_apps_installed_tab", result);
-                }
-            }
-        });
     }
 
     /**
@@ -193,8 +84,6 @@ public class PlayStoreChangelog implements IXposedHookLoadPackage {
     private void refreshPreferences() {
         prefs.reload();
         showFullChangelog = prefs.getBoolean("pref_full_changelog", showFullChangelog);
-        myAppsDefaultPane = prefs.getBoolean("pref_my_apps_default_pane", myAppsDefaultPane);
-        autoRefreshInstalled = prefs.getBoolean("pref_my_apps_auto_refresh", autoRefreshInstalled);
         debugging = prefs.getBoolean("pref_debug", debugging);
     }
 }
