@@ -18,6 +18,8 @@
  */
 package com.p1ngu1n.playstorechangelog;
 
+import android.annotation.SuppressLint;
+import android.content.Context;
 import android.os.Bundle;
 import android.preference.PreferenceFragment;
 
@@ -28,7 +30,7 @@ import java.io.File;
  */
 public class SettingsFragment extends PreferenceFragment {
 
-    @SuppressWarnings("deprecation")
+    @SuppressLint("WorldReadableFiles")
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,6 +42,7 @@ public class SettingsFragment extends PreferenceFragment {
     }
 
     @Override
+    @SuppressLint("SetWorldReadable")
     public void onPause() {
         super.onPause();
 
